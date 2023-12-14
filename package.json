@@ -1,9 +1,31 @@
 {
-  "name": "nestjs-googledrive",
-  "version": "0.0.1",
-  "description": "Lib for upload images on google drive",
+  "name": "nestjs-googledrive-upload",
+  "version": "1.0.1",
+  "description": "Lib for upload images on google drive for nestjs apps",
   "author": "luvlqq",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
+  "publishConfig": {
+  "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+  "type": "git",
+  "url": "git+https://github.com/luvlqq/nestjs-googledrive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luvlqq/nestjs-googledrive/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "google",
+    "google-drive",
+    "drive",
+    "nodejs",
+    "google-drive-api",
+    "upload",
+    "files",
+    "cloud-storage"
+  ],
+  "homepage": "https://github.com/luvlqq/nestjs-googledrive#readme",
   "private": false,
   "license": "MIT",
   "scripts": {

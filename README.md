@@ -7,7 +7,7 @@ This library provides a NestJS module for interacting with Google Drive. It incl
 Install the library with npm:
 
 ```bash
-npm install nestjs-googledrive
+npm install nestjs-googledrive-upload
 ```
 
 ## Usage
@@ -16,8 +16,10 @@ First, import `GoogleDriveModule` into your module:
 
 import { GoogleDriveModule, GoogleDriveConfig } from 'your-library';
 
+Watch this [video](https://youtu.be/-YZRkIbNWY0?t=43) for check how to get your Google Drive config.
+
 ```ts
-import { GoogleDriveModule, GoogleDriveConfig } from 'nestjs-googledrive';
+import { GoogleDriveModule, GoogleDriveConfig } from 'nestjs-googledrive-upload';
 
 @Module({
   imports: [
@@ -63,6 +65,12 @@ Google Drive API example
 }
 ```
 
+And change in your `tsconfig`
+```json
+"compilerOptions": {
+    "resolveJsonModule": true,
+  }
+```
 
 And import like this 
 
@@ -80,7 +88,7 @@ Then, you can use GoogleDriveService in your services:
 
 ```ts
 import { Injectable } from '@nestjs/common';
-import { GoogleDriveService } from 'nestjs-googledrive';
+import { GoogleDriveService } from 'nestjs-googledrive-upload';
 
 @Injectable()
 export class YourService {
