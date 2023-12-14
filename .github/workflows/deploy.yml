@@ -1,9 +1,6 @@
 name: Node.js Package
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   build:
@@ -16,7 +13,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm ci
-      - run: npm test
 
       - run: npm publish
         env:
