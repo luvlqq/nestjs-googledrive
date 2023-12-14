@@ -1,6 +1,6 @@
 {
   "name": "nestjs-googledrive-upload",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lib for upload images on google drive for nestjs apps",
   "author": "luvlqq",
   "main": "dist/index.js",
