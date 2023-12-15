@@ -23,10 +23,10 @@ export class GoogleDriveService {
 
   /**
    *
-   * @param file your upload file
+   * @param file your upload file like mp3, png, jpeg etc...
    * @return link link four your file on Google Drive
    */
-  public async uploadImage(file: Express.Multer.File): Promise<string> {
+  public async uploadData(file: Express.Multer.File): Promise<string> {
     try {
       const { originalname, buffer } = file;
 
@@ -57,7 +57,7 @@ export class GoogleDriveService {
    *
    * @param fileId your file id which you want to get
    */
-  public async getImage(fileId: string): Promise<string> {
+  public async getData(fileId: string): Promise<string> {
     try {
       return `https://drive.google.com/uc?id=${fileId}`;
     } catch (e) {
