@@ -47,10 +47,8 @@ export class GoogleDriveService {
         fields: 'id, webViewLink',
       });
 
-      const fileId = driveResponse.data.id;
-      const webViewLink = driveResponse.data.webViewLink; // Это ссылка для просмотра файла
+      const webViewLink = driveResponse.data.webViewLink;
       return webViewLink;
-      // return `https://drive.google.com/uc?id=${fileId}`;
     } catch (e) {
       throw new Error(e);
     }
