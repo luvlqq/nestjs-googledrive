@@ -44,10 +44,13 @@ export class GoogleDriveService {
           parents: [this.googleDriveFolderId],
         },
         media: media,
+        fields: 'id, webViewLink',
       });
 
       const fileId = driveResponse.data.id;
-      return `https://drive.google.com/uc?id=${fileId}`;
+      const webViewLink = driveResponse.data.webViewLink; // Это ссылка для просмотра файла
+      return webViewLink;
+      // return `https://drive.google.com/uc?id=${fileId}`;
     } catch (e) {
       throw new Error(e);
     }
