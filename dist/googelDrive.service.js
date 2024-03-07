@@ -46,9 +46,15 @@ let GoogleDriveService = class GoogleDriveService {
                     parents: [this.googleDriveFolderId],
                 },
                 media: media,
+                fields: 'id',
             });
             const fileId = driveResponse.data.id;
-            return `https://drive.google.com/uc?id=${fileId}`;
+            const response = await this.drive.files.get({
+                fileId: fileId,
+                fields: 'id',
+            });
+            const newFileId = response.data.id;
+            return `https://drive.google.com/thumbnail?id=${newFileId}`;
         }
         catch (e) {
             throw new Error(e);
@@ -56,7 +62,7 @@ let GoogleDriveService = class GoogleDriveService {
     }
     async getImage(fileId) {
         try {
-            return `https://drive.google.com/uc?id=${fileId}`;
+            return `https://drive.google.com/thumbnail?id=${fileId}`;
         }
         catch (e) {
             throw new Error(e);

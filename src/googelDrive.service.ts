@@ -26,7 +26,7 @@ export class GoogleDriveService {
    * @param file your upload file like mp3, png, jpeg etc...
    * @return link link four your file on Google Drive
    */
-  public async uploadData(file: Express.Multer.File): Promise<string> {
+  public async uploadImage(file: Express.Multer.File): Promise<string> {
     try {
       const { originalname, buffer } = file;
 
@@ -44,11 +44,17 @@ export class GoogleDriveService {
           parents: [this.googleDriveFolderId],
         },
         media: media,
-        fields: 'id, webViewLink',
+        fields: 'id',
       });
 
-      const webViewLink = driveResponse.data.webViewLink;
-      return webViewLink;
+      const fileId = driveResponse.data.id;
+      const response = await this.drive.files.get({
+        fileId: fileId,
+        fields: 'id',
+      });
+
+      const newFileId = response.data.id;
+      return `https://drive.google.com/thumbnail?id=${newFileId}`;
     } catch (e) {
       throw new Error(e);
     }
@@ -58,9 +64,9 @@ export class GoogleDriveService {
    *
    * @param fileId your file id which you want to get
    */
-  public async getData(fileId: string): Promise<string> {
+  public async getImage(fileId: string): Promise<string> {
     try {
-      return `https://drive.google.com/uc?id=${fileId}`;
+      return `https://drive.google.com/thumbnail?id=${fileId}`;
     } catch (e) {
       throw new Error(e);
     }

@@ -74,7 +74,7 @@ And change in your `tsconfig`
   }
 ```
 
-And import like this 
+## .register
 
 ```ts
 import * as config from 'src/testdir/config.json';
@@ -85,6 +85,44 @@ import * as config from 'src/testdir/config.json';
   ],
 })
 ```
+## .registerAsync
+
+The `registerAsync` method in the `GoogleDriveModule` allows for registering the module asynchronously with the ability to dynamically configure the configuration.
+
+### Syntax
+
+```ts
+GoogleDriveModule.registerAsync(options: GoogleDriveModuleAsyncOptions): DynamicModule
+```
+
+Parameters:
+- options (GoogleDriveModuleAsyncOptions): The options object for asynchronously registering the module. It contains the following properties:
+- imports (optional): An array of NestJS modules that need to be imported before creating the GoogleDriveModule module.
+- useFactory: The function that will be invoked to asynchronously create the configuration. It should return an object configuration or a promise with the configuration object.
+- inject (optional): An array of dependencies to be injected into the useFactory function.
+
+### Usage
+
+```ts
+import { Module } from '@nestjs/common';
+import { GoogleDriveModule } from 'nestjs-googledrive-upload';
+
+@Module({
+  imports: [
+    GoogleDriveModule.registerAsync({
+      imports: [], // Can import other modules if needed
+      useFactory: async () => {
+        // Your code to asynchronously fetch the configuration
+        const config = await fetchConfigFromSomewhere();
+        return config;
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+---
 
 Then, you can use GoogleDriveService in your services:
 

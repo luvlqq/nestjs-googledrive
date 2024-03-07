@@ -1,6 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { GoogleDriveService } from './googelDrive.service';
 import { GoogleDriveConfig } from './types';
+import { GoogleDriveModuleAsyncOptions } from './types/googleDrive.module.async.interface';
 
 @Module({})
 export class GoogleDriveModule {
@@ -25,6 +26,23 @@ export class GoogleDriveModule {
         { provide: 'CONFIG', useValue: googleDriveConfig },
         { provide: 'FOLDERID', useValue: googleDriveFolderId },
       ],
+    };
+  }
+
+  static registerAsync(options: GoogleDriveModuleAsyncOptions): DynamicModule {
+    return {
+      module: GoogleDriveModule,
+      global: true,
+      imports: options.imports,
+      providers: [
+        GoogleDriveService,
+        {
+          provide: 'CONFIG',
+          useFactory: options.useFactory,
+          inject: options.inject || [],
+        },
+      ],
+      exports: [GoogleDriveService],
     };
   }
 }

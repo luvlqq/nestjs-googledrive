@@ -27,6 +27,22 @@ let GoogleDriveModule = GoogleDriveModule_1 = class GoogleDriveModule {
             ],
         };
     }
+    static registerAsync(options) {
+        return {
+            module: GoogleDriveModule_1,
+            global: true,
+            imports: options.imports,
+            providers: [
+                googelDrive_service_1.GoogleDriveService,
+                {
+                    provide: 'CONFIG',
+                    useFactory: options.useFactory,
+                    inject: options.inject || [],
+                },
+            ],
+            exports: [googelDrive_service_1.GoogleDriveService],
+        };
+    }
 };
 exports.GoogleDriveModule = GoogleDriveModule;
 exports.GoogleDriveModule = GoogleDriveModule = GoogleDriveModule_1 = __decorate([
