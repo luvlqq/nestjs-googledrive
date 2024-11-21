@@ -15,7 +15,7 @@ npm install nestjs-googledrive-upload
 First, import `GoogleDriveModule` into your module:
 
 ```ts
-import { GoogleDriveModule, GoogleDriveConfig } from 'nestjs-googledrive-up';
+import { GoogleDriveModule, GoogleDriveConfig } from 'nestjs-googledrive-upload';
 ```
 
 Watch this [video](https://youtu.be/-YZRkIbNWY0?t=43) for check how to get your Google Drive config.

@@ -71,4 +71,23 @@ export class GoogleDriveService {
       throw new Error(e);
     }
   }
+
+  /**
+   * Delete your file from Google Drive.
+   * @param fileId your file id
+   * */
+  /**
+   * Delete your file from Google Drive.
+   * @param fileId your file id
+   */
+  public async deleteImage(fileId: string): Promise<boolean> {
+    try {
+      await this.drive.files.delete({
+        fileId: fileId,
+      });
+      return true;
+    } catch (e) {
+      throw new Error(`Failed to delete file with ID ${fileId}: ${e.message}`);
+    }
+  }
 }
